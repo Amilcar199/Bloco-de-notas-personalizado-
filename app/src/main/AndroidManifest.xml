@@ -1,4 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+\t<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+\t<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+\t<!-- Exact alarms on Android 12+ (granted by the user in settings) -->
+\t<uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+
+\t<application
+\t\tandroid:name=".NotesApp"
+\t\tandroid:allowBackup="true"
+\t\tandroid:icon="@mipmap/ic_launcher"
+\t\tandroid:label="Notes with Alarms"
+\t\tandroid:roundIcon="@mipmap/ic_launcher_round"
+\t\tandroid:supportsRtl="true"
+\t\tandroid:theme="@style/Theme.NotesWithAlarms">
+
+\t\t<activity
+\t\t\tandroid:name=".MainActivity"
+\t\t\tandroid:exported="true">
+\t\t\t<intent-filter>
+\t\t\t\t<action android:name="android.intent.action.MAIN" />
+\t\t\t\t<category android:name="android.intent.category.LAUNCHER" />
+\t\t\t</intent-filter>
+\t\t</activity>
+
+\t\t<receiver
+\t\t\tandroid:name=".receivers.AlarmReceiver"
+\t\t\tandroid:exported="false" />
+
+\t\t<receiver
+\t\t\tandroid:name=".receivers.BootReceiver"
+\t\t\tandroid:enabled="true"
+\t\t\tandroid:exported="true">
+\t\t\t<intent-filter>
+\t\t\t\t<action android:name="android.intent.action.BOOT_COMPLETED" />
+\t\t\t</intent-filter>
+\t\t</receiver>
+
+\t</application>
+
+</manifest>
+
+<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 	package="com.example.notesalarm">
 

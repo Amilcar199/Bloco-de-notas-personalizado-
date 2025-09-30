@@ -1,3 +1,9 @@
+plugins {
+\tid("com.android.application") version "8.4.2" apply false
+\tid("org.jetbrains.kotlin.android") version "1.9.24" apply false
+\tid("com.google.devtools.ksp") version "1.9.24-1.0.20" apply false
+}
+
 // Top-level build file
 
 allprojects {
