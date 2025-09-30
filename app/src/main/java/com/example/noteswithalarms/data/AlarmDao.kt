@@ -9,6 +9,8 @@ import androidx.room.Update
 
 @Dao
 interface AlarmDao {
+    @Query("SELECT * FROM alarms WHERE id = :id")
+    suspend fun getById(id: Long): Alarm?
     @Query("SELECT * FROM alarms WHERE noteId = :noteId")
     suspend fun getByNoteId(noteId: Long): List<Alarm>
 

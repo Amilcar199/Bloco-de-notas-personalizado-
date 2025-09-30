@@ -13,6 +13,9 @@ interface NoteDao {
     @Query("SELECT * FROM notes ORDER BY updatedAtEpochMillis DESC")
     fun observeAll(): Flow<List<Note>>
 
+    @Query("SELECT * FROM notes ORDER BY updatedAtEpochMillis DESC")
+    suspend fun getAllNow(): List<Note>
+
     @Query("SELECT * FROM notes WHERE id = :id")
     suspend fun getById(id: Long): Note?
 
