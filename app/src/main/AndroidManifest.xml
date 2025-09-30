@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.example.notesalarm">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
@@ -12,7 +11,7 @@
 		android:icon="@android:drawable/ic_lock_idle_alarm"
 		android:label="Notes Alarm"
 		android:supportsRtl="true"
-		android:theme="@android:style/Theme.DeviceDefault">
+		android:theme="@style/Theme.Material3.Light.NoActionBar">
 
 		<activity
 			android:name=".MainActivity"
