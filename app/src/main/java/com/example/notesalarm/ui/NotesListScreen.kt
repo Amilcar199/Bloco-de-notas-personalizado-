@@ -25,6 +25,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -33,7 +34,7 @@ import com.example.notesalarm.data.Note
 @Composable
 fun NotesListScreen(vm: NotesViewModel, onCreate: () -> Unit, onEdit: (Long) -> Unit) {
 	var query by remember { mutableStateOf("") }
-	val notes = vm.notes
+	val notes by vm.notes.collectAsState()
 	Scaffold(
 		floatingActionButton = {
 			FloatingActionButton(onClick = onCreate) {
@@ -53,7 +54,7 @@ fun NotesListScreen(vm: NotesViewModel, onCreate: () -> Unit, onEdit: (Long) -> 
 			)
 			Spacer(Modifier.height(12.dp))
 			LazyColumn(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-				items(notes.value) { note ->
+				items(notes) { note ->
 					NoteRow(note = note, onClick = { onEdit(note.id) })
 				}
 			}
